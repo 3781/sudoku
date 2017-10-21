@@ -4,7 +4,7 @@
 #include "SudokuGenerator.h"
 #include "SudokuTest.h"
 
-#define NUM_MAX 362880
+#define NUM_MAX 40320
 
 int getVarNum(int argc, char *argv[]) {
     if (argc != 3) {
@@ -53,10 +53,10 @@ int main(int argc, char *argv[]) {
         std::string str = data.toString();
         outFile << str << std::endl;
 
-        if (!SudokuTest::validSudoku(data)) {
-            std::cout << "出错了" << std::endl;
-            break;
-        }
+        //if (!SudokuTest::validSudoku(data)) {
+        //    std::cout << "出错了" << std::endl;
+        //    break;
+        //}
     }
 
     outFile.close();

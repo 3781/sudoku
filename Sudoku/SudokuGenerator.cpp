@@ -1,8 +1,16 @@
 #include "SudokuGenerator.h"
 
 SudokuGenerator::SudokuGenerator():
-    mFirstMatrix{ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, mCount(0), mMatrixNum(0)
+    mCount(0), mMatrixNum(0)
 {
+    int first = (7 + 4) % 9 + 1;
+    mFirstMatrix[0] = first;
+    for (int i = 1, t = 1; i <= SudokuData::DIMEN; i++) {
+        if (i == first) {
+            continue;
+        }
+        mFirstMatrix[t++] = i;
+    }
 }
 
 SudokuGenerator::~SudokuGenerator()
@@ -39,7 +47,7 @@ void SudokuGenerator::randomFirstMatrix()
 {
     while (true) {
         // 生成随机排列
-        std::random_shuffle(mFirstMatrix, mFirstMatrix + SudokuData::DIMEN);
+        std::random_shuffle(mFirstMatrix + 1, mFirstMatrix + SudokuData::DIMEN);
 
         std::stringstream ss;
         for (int i = 0; i < SudokuData::DIMEN; i++) {
